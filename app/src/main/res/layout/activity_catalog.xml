@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".CatalogActivity">
+
+        <!-- SUMMARY DISPLAY -->
+        <TextView
+            android:id="@+id/summary_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:textAlignment="center"
+            tools:text="BookStoreApp Summary" />
+
+        <!-- ADD NEW BOOK TITLE -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/insert_new_book"
+            android:textAlignment="center"
+            android:textAllCaps="true" />
+
+        <!-- FIELD: NAME -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label: Book name -->
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/product_name" />
+
+            <!-- Field: Book name -->
+            <EditText
+                android:id="@+id/edit_book_name"
+                style="@style/FieldStyle"
+                android:hint="@string/hint_book_name"
+                android:inputType="textCapSentences" />
+
+        </LinearLayout>
+
+        <!-- FIELD: PRICE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label: Book price -->
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/book_price" />
+
+            <!-- Field: Book price -->
+            <EditText
+                android:id="@+id/edit_book_price"
+                style="@style/FieldStyle"
+                android:hint="@string/hint_book_price"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <!-- FIELD QUANTITY -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label: Book quantity -->
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/book_quantity" />
+
+            <!-- Field: Book quantity -->
+            <EditText
+                android:id="@+id/edit_book_quantity"
+                style="@style/FieldStyle"
+                android:hint="@string/hint_book_quantity"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <!-- FIELD SUPPLIER'S NAME  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label: Book supplier name -->
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/book_supplier" />
+
+            <!-- Field: Book supplier name -->
+            <EditText
+                android:id="@+id/edit_book_supplier"
+                style="@style/FieldStyle"
+                android:hint="@string/hint_book_supplier"
+                android:inputType="textCapSentences" />
+
+        </LinearLayout>
+
+        <!-- FIELD SUPPLIER'S PHONE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Label: Book supplier phone -->
+            <TextView
+                style="@style/LabelStyle"
+                android:text="@string/book_supplier_phone" />
+
+            <!-- Field: Book supplier phone -->
+            <EditText
+                android:id="@+id/edit_book_supplier_phone"
+                style="@style/FieldStyle"
+                android:hint="@string/hint_book_supplier_phone"
+                android:inputType="phone" />
+
+        </LinearLayout>
+
+        <!-- Button Add -->
+
+        <Button
+            android:id="@+id/add_book_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="@string/add_book_button" />
+    </LinearLayout>
+</ScrollView>
