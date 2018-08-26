@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">BookStoreApp</string>
-    <string name="insert_new_book">Add new book</string>
+    <string name="app_name">BookStore</string>
     <string name="product_name">Name</string>
     <string name="hint_book_name">Insert Book Name</string>
     <string name="book_price">Price</string>
@@ -12,6 +11,29 @@
     <string name="book_supplier_phone">Phone</string>
     <string name="hint_book_supplier_phone">Insert Supplier\'s Phone</string>
     <string name="add_book_button">Add Book</string>
-    <string name="toast_error">Error with saving the book</string>
-    <string name="toast_success">Book saved with row id:</string>
+    <string name="editor_insert_book_failed">Error with saving the book</string>
+    <string name="editor_insert_book_success">Book saved successfully</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="action_delete_all_books">Delete All Books</string>
+    <string name="editor_activity_title_edit_book">Edit Book</string>
+    <string name="editor_activity_title_add_book">Add a Book</string>
+    <string name="empty_view_title_text">It\'s a bit lonely here…</string>
+    <string name="empty_view_subtitle_text">Get started by adding a book</string>
+    <string name="delete_all_books_successful">All books deleted</string>
+    <string name="editor_update_book_failed">Error with updating the book</string>
+    <string name="editor_update_book_successful">Book updated</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit the editing?</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+    <string name="delete_dialog_msg">Delete this pet?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="editor_delete_book_successful">Book deleted</string>
+    <string name="editor_delete_book_failed">Error with deleting book</string>
+    <string name="delete_all_books_failed">Error with deleting all books</string>
+    <string name="unknown_supplier">Unknown supplier</string>
+    <string name="not_available">Not available</string>
+
 </resources>

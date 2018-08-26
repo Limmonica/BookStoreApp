@@ -1,143 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Layout for the list of books -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".CatalogActivity">
 
-    <LinearLayout
+    <!-- LISTVIEW DISPLAY -->
+    <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Empty view for the list -->
+    <RelativeLayout
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context=".CatalogActivity">
+        android:layout_centerInParent="true">
 
-        <!-- SUMMARY DISPLAY -->
-        <TextView
-            android:id="@+id/summary_display"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:textAlignment="center"
-            tools:text="BookStoreApp Summary" />
-
-        <!-- ADD NEW BOOK TITLE -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="@string/insert_new_book"
-            android:textAlignment="center"
-            android:textAllCaps="true" />
-
-        <!-- FIELD: NAME -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Label: Book name -->
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/product_name" />
-
-            <!-- Field: Book name -->
-            <EditText
-                android:id="@+id/edit_book_name"
-                style="@style/FieldStyle"
-                android:hint="@string/hint_book_name"
-                android:inputType="textCapSentences" />
-
-        </LinearLayout>
-
-        <!-- FIELD: PRICE -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Label: Book price -->
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/book_price" />
-
-            <!-- Field: Book price -->
-            <EditText
-                android:id="@+id/edit_book_price"
-                style="@style/FieldStyle"
-                android:hint="@string/hint_book_price"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-        <!-- FIELD QUANTITY -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Label: Book quantity -->
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/book_quantity" />
-
-            <!-- Field: Book quantity -->
-            <EditText
-                android:id="@+id/edit_book_quantity"
-                style="@style/FieldStyle"
-                android:hint="@string/hint_book_quantity"
-                android:inputType="number" />
-
-        </LinearLayout>
-
-        <!-- FIELD SUPPLIER'S NAME  -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Label: Book supplier name -->
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/book_supplier" />
-
-            <!-- Field: Book supplier name -->
-            <EditText
-                android:id="@+id/edit_book_supplier"
-                style="@style/FieldStyle"
-                android:hint="@string/hint_book_supplier"
-                android:inputType="textCapSentences" />
-
-        </LinearLayout>
-
-        <!-- FIELD SUPPLIER'S PHONE -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Label: Book supplier phone -->
-            <TextView
-                style="@style/LabelStyle"
-                android:text="@string/book_supplier_phone" />
-
-            <!-- Field: Book supplier phone -->
-            <EditText
-                android:id="@+id/edit_book_supplier_phone"
-                style="@style/FieldStyle"
-                android:hint="@string/hint_book_supplier_phone"
-                android:inputType="phone" />
-
-        </LinearLayout>
-
-        <!-- Button Add -->
-
-        <Button
-            android:id="@+id/add_book_button"
+        <ImageView
+            android:id="@+id/empty_library_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="@string/add_book_button" />
-    </LinearLayout>
-</ScrollView>
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_local_library_black_24dp" />
+
+        <TextView
+            android:id="@+id/empty_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty_library_image"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif-medium"
+            android:paddingTop="16dp"
+            android:text="@string/empty_view_title_text"
+            android:textAppearance="?android:textAppearanceMedium"
+            tools:targetApi="jelly_bean" />
+
+        <TextView
+            android:id="@+id/empty_subtitle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/empty_title_text"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:paddingTop="8dp"
+            android:text="@string/empty_view_subtitle_text"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="#A2AAB0"
+            tools:targetApi="jelly_bean" />
+    </RelativeLayout>
+
+    <!-- ADD BOOK BUTTON -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add_black_24dp" />
+
+</RelativeLayout>
