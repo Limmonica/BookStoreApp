@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.limmonica.bookstoreapp.data.BookContract.BookEntry;
@@ -68,7 +69,7 @@ public class BookProvider extends ContentProvider {
      * arguments and sort order.
      */
     @Override
-    public Cursor query(Uri uri,
+    public Cursor query(@NonNull Uri uri,
                         String[] projection,
                         String selection,
                         String[] selectionArgs,
@@ -102,7 +103,9 @@ public class BookProvider extends ContentProvider {
 
         // Set notification URI on the Cursor in order to know what content URI the Cursor was
         // created for
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        if (getContext() != null) {
+            cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        }
 
         // Return the cursor
         return cursor;
@@ -112,7 +115,7 @@ public class BookProvider extends ContentProvider {
      * Returns the MIME type of data for the content URI.
      */
     @Override
-    public String getType(Uri uri) {
+    public String getType(@NonNull Uri uri) {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case BOOKS:
@@ -128,7 +131,7 @@ public class BookProvider extends ContentProvider {
      * Insert new data into the provider with the given ContentValues.
      */
     @Override
-    public Uri insert(Uri uri, ContentValues contentValues) {
+    public Uri insert(@NonNull Uri uri, ContentValues contentValues) {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case BOOKS:
@@ -165,7 +168,7 @@ public class BookProvider extends ContentProvider {
         // Get writeable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
 
-        // Insert the new pet with the given values
+        // Insert the new book with the given values
         long id = database.insert(BookEntry.TABLE_NAME, null, values);
 
         // If the ID is -1, then the insertion failed. Log an error and return null.
@@ -175,7 +178,9 @@ public class BookProvider extends ContentProvider {
         }
 
         // Notify all listeners that the data has changed for the book content URI
-        getContext().getContentResolver().notifyChange(uri, null);
+        if (getContext() != null) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
 
         // Return the new URI with the ID (of the newly inserted row) appended to the end of it
         return ContentUris.withAppendedId(uri, id);
@@ -185,7 +190,7 @@ public class BookProvider extends ContentProvider {
      * Updates the data at the given selection and selection arguments, with the new ContentValues.
      */
     @Override
-    public int update(Uri uri,
+    public int update(@NonNull Uri uri,
                       ContentValues contentValues,
                       String selection,
                       String[] selectionArgs) {
@@ -260,7 +265,9 @@ public class BookProvider extends ContentProvider {
         // has changed
         if (rowsUpdated != 0) {
             // Notify all listeners that the data has changed for the book content URI
-            getContext().getContentResolver().notifyChange(uri, null);
+            if (getContext() != null) {
+                getContext().getContentResolver().notifyChange(uri, null);
+            }
         }
 
         // Return the number of rows updated
@@ -271,7 +278,7 @@ public class BookProvider extends ContentProvider {
      * Delete the data at the given selection and selection arguments.
      */
     @Override
-    public int delete(Uri uri,
+    public int delete(@NonNull Uri uri,
                       String selection,
                       String[] selectionArgs) {
 
@@ -302,7 +309,9 @@ public class BookProvider extends ContentProvider {
         // If 1 or more rows were deleted, then notify all listeners that the data at the
         // given URI has changed
         if (rowsDeleted != 0) {
-            getContext().getContentResolver().notifyChange(uri, null);
+            if (getContext() != null) {
+                getContext().getContentResolver().notifyChange(uri, null);
+            }
         }
 
         // Return the number of rows deleted

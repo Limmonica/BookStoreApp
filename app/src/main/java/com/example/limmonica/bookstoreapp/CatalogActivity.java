@@ -1,9 +1,11 @@
 package com.example.limmonica.bookstoreapp;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
@@ -24,11 +26,6 @@ import com.example.limmonica.bookstoreapp.data.BookContract.BookEntry;
  * Displays list of books that were entered and stored in the app.
  */
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    /**
-     * Tag for the log messages
-     */
-    private static final String LOG_TAG = CatalogActivity.class.getSimpleName();
 
     /**
      * Identifier for the book data loader
@@ -107,8 +104,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, "+1 800 800 333");
 
         // Insert a new row for the book in the provider using the ContentResolver.
-        // Receive the new content URI that will allow us to access the book in the future
-        Uri newUri = getContentResolver().insert(BookEntry.CONTENT_URI, values);
+        getContentResolver().insert(BookEntry.CONTENT_URI, values);
     }
 
     /**
@@ -125,6 +121,34 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             // Otherwise, the delete was successful
             Toast.makeText(this, R.string.delete_all_books_successful, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * Prompt the user to confirm that they want to delete all books
+     */
+    private void showDeleteAllConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.delete_all_dialog_msg);
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Delete" button, so delete all the books
+                deleteAllBooks();
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "Cancel" button, so dismiss the dialog
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        // Create and show the AlertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     /**
@@ -161,7 +185,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 return true;
             // Respond to a click on the "Delete All Entries" menu option
             case R.id.action_delete_all_entries:
-                deleteAllBooks();
+                showDeleteAllConfirmationDialog();
                 return true;
         }
         return super.onOptionsItemSelected(item);

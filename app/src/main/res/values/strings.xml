@@ -27,7 +27,7 @@
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit the editing?</string>
     <string name="discard">Discard</string>
     <string name="keep_editing">Keep Editing</string>
-    <string name="delete_dialog_msg">Delete this pet?</string>
+    <string name="delete_dialog_msg">Delete this book?</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
     <string name="editor_delete_book_successful">Book deleted</string>
@@ -35,5 +35,6 @@
     <string name="delete_all_books_failed">Error with deleting all books</string>
     <string name="unknown_supplier">Unknown supplier</string>
     <string name="not_available">Not available</string>
+    <string name="delete_all_dialog_msg">Delete all books?</string>
 
 </resources>

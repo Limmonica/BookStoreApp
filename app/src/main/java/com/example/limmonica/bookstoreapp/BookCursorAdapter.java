@@ -23,7 +23,7 @@ public class BookCursorAdapter extends CursorAdapter {
      * @param context is the context of the app
      * @param cursor  is the cursor from which to get the data
      */
-    public BookCursorAdapter(Context context, Cursor cursor) {
+    BookCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
     }
 

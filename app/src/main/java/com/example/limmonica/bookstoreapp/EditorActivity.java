@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.limmonica.bookstoreapp.data.BookContract.BookEntry;
 
+import java.util.Locale;
+
 /**
  * Allows user to create a new book or edit an existing one.
  */
@@ -343,7 +345,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             case R.id.action_delete:
                 // Show confirmation dialog for deletion
                 showDeleteConfirmationDialog();
-                // Respond to a click on the "Up" arrow button in the app bar
+                return true;
+            // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
                 // If the book hasn't changed, continue with navigating up to
                 // parent activity (Catalog Activity)
@@ -391,6 +394,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        // Bail early if the cursor is null or there is less than 1 row in the cursor
+        if (cursor == null || cursor.getCount() < 1) {
+            return;
+        }
+
         // Move at the first and only row of the cursor and read data from it
         if (cursor.moveToFirst()) {
             // Find the columns of book attributes that we're interested in
@@ -409,16 +417,20 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             // Update the views on the screen with the values from the database
             mTitleEditText.setText(title);
-            mPriceEditText.setText(Integer.toString(price));
-            mQuantityEditText.setText(Integer.toString(quantity));
+            mPriceEditText.setText(String.format(Locale.getDefault(), "%s", Integer.toString(price)));
+            mQuantityEditText.setText(String.format(Locale.getDefault(), "%s", Integer.toString(quantity)));
             mSupplierText.setText(supplier);
             mPhoneEditText.setText(phone);
         }
-
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
+        // If the loader is invalidated, clear out the data from the input fields
+        mTitleEditText.setText("");
+        mPriceEditText.setText("");
+        mQuantityEditText.setText("");
+        mSupplierText.setText("");
+        mPhoneEditText.setText("");
     }
 }
