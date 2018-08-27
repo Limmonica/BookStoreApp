@@ -5,7 +5,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
- * API Contract for the Pets app.
+ * API Contract for the books app.
  * Final class for providing constants
  */
 public final class BookContract {
@@ -18,17 +18,17 @@ public final class BookContract {
      */
     public static final String CONTENT_AUTHORITY = "com.example.limmonica.bookstoreapp";
     /**
-     * Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact
-     * the content provider.
-     */
-    public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    /**
      * Possible path (appended to base content URI for possible URI's)
-     * For instance, content://com.example.android.pets/pets/ is a valid path for
-     * looking at pet data. content://com.example.android.pets/staff/ will fail,
+     * For instance, content://com.example.android.books/books/ is a valid path for
+     * looking at book data. content://com.example.android.books/staff/ will fail,
      * as the ContentProvider hasn't been given any information on what to do with "staff".
      */
     public static final String PATH_BOOKS = "books";
+    /**
+     * Use CONTENT_AUTHORITY to create the base of all URI's which apps will use to contact
+     * the content provider.
+     */
+    static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
     /**
      * Empty constructor to prevent accidental instantiating of the contract class
@@ -43,7 +43,7 @@ public final class BookContract {
     public static final class BookEntry implements BaseColumns {
 
         /**
-         * The content URI to access the pet data in the provider
+         * The content URI to access the book data in the provider
          */
         public static final Uri CONTENT_URI = Uri.withAppendedPath(BASE_CONTENT_URI, PATH_BOOKS);
 
@@ -76,7 +76,7 @@ public final class BookContract {
          * <p>
          * Type: TEXT
          */
-        public final static String COLUMN_BOOK_PRODUCT_NAME = "name";
+        public final static String COLUMN_BOOK_NAME = "name";
 
         /**
          * Price of the book.
@@ -104,6 +104,6 @@ public final class BookContract {
          * <p>
          * Type: TEXT
          */
-        public final static String COLUMN_BOOK_SUPPLIER_PHONE_NUMBER = "phone";
+        public final static String COLUMN_BOOK_SUPPLIER_PHONE = "phone";
     }
 }

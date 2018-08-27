@@ -1,39 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/book_title_text_view"
+    <android.support.design.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Gone With The Wind by Margaret Mitchell" />
+        app:cardBackgroundColor="@color/colorCard"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardMaxElevation="@dimen/card_max_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:contentPadding="@dimen/card_content_padding"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="@dimen/card_stroke_width">
 
-    <TextView
-        android:id="@+id/book_price_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="28$" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/book_quantity_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Quantity" />
+            <!-- TITLE -->
+            <TextView
+                android:id="@+id/book_title_text_view"
+                style="@style/ListItemTitleStyle"
+                tools:text="Gone With The Wind" />
 
-    <TextView
-        android:id="@+id/book_supplier_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Supplier" />
+            <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-    <TextView
-        android:id="@+id/book_order_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Order" />
+                <!-- LAYOUT: LABELS -->
+                <LinearLayout style="@style/ListItemValuesLayout">
 
+                    <!-- PRICE -->
+                    <TextView
+                        style="@style/ListItemLabelsStyle"
+                        android:text="@string/list_item_price_label" />
+
+                    <!-- QTY -->
+                    <TextView
+                        style="@style/ListItemLabelsStyle"
+                        android:text="@string/list_item_qty_label" />
+
+                </LinearLayout>
+
+                <!-- LAYOUT: VALUES -->
+                <LinearLayout style="@style/ListItemValuesLayout">
+
+                    <TextView
+                        android:id="@+id/book_price_text_view"
+                        style="@style/ListItemValuesStyle"
+                        tools:text="28 $" />
+
+                    <TextView
+                        android:id="@+id/book_quantity_text_view"
+                        style="@style/ListItemValuesStyle"
+                        tools:text="250 pcs." />
+                </LinearLayout>
+
+                <!-- BUTTON: SALE-->
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/sale_button"
+                    style="@style/SaleButtonStyle"
+                    android:text="@string/sale_button"
+                    app:cornerRadius="@dimen/corner_radius"
+                    app:icon="@drawable/sale"
+                    tools:targetApi="lollipop" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.design.card.MaterialCardView>
 </LinearLayout>

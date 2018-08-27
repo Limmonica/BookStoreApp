@@ -2,45 +2,40 @@
 
 <!-- Layout for the Book Editor -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/parent_layout_padding"
     tools:context=".EditorActivity">
 
-    <!-- NAME -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!-- LAYOUT: TITLE -->
+    <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-        <!-- Label: Book name -->
+        <!-- LABEL: Title -->
         <TextView
             style="@style/LabelStyle"
-            android:text="@string/product_name" />
+            android:text="@string/book_title" />
 
-        <!-- Field: Book name -->
+        <!-- FIELD: Title of the book -->
         <EditText
             android:id="@+id/edit_book_name"
             style="@style/FieldStyle"
-            android:hint="@string/hint_book_name"
+            android:hint="@string/hint_book_title"
             android:inputType="textCapSentences" />
 
     </LinearLayout>
 
-    <!-- PRICE -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!-- LAYOUT: PRICE -->
+    <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-        <!-- Label: Book price -->
+        <!-- Label: Price -->
         <TextView
             style="@style/LabelStyle"
             android:text="@string/book_price" />
 
-        <!-- Field: Book price -->
+        <!-- Field: Price of the book -->
         <EditText
             android:id="@+id/edit_book_price"
             style="@style/FieldStyle"
@@ -49,58 +44,81 @@
 
     </LinearLayout>
 
-    <!-- QUANTITY -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!-- LAYOUT: QUANTITY -->
+    <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-        <!-- Label: Book quantity -->
+        <!-- LABEL: Quantity -->
         <TextView
             style="@style/LabelStyle"
+            android:layout_marginTop="@dimen/qty_edit_margin_top"
             android:text="@string/book_quantity" />
 
-        <!-- Field: Book quantity -->
+        <!-- FIELD: Quantity of the book -->
         <EditText
             android:id="@+id/edit_book_quantity"
             style="@style/FieldStyle"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/qty_edit_margin_top"
+            android:layout_weight="2"
             android:hint="@string/hint_book_quantity"
             android:inputType="number" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <!-- BUTTON: INCREMENT -->
+            <android.support.design.button.MaterialButton
+                android:id="@+id/plus_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/increment_quantity"
+                android:textSize="@dimen/qty_buttons_text_size"
+                app:cornerRadius="@dimen/corner_radius" />
+
+            <!-- BUTTON: DECREMENT -->
+            <android.support.design.button.MaterialButton
+                android:id="@+id/minus_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/qty_button_margin_top"
+                android:text="@string/decrement_quantity"
+                android:textSize="@dimen/qty_buttons_text_size"
+                app:cornerRadius="@dimen/corner_radius" />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <!-- SUPPLIER'S NAME  -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!-- LAYOUT: SUPPLIER  -->
+    <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-        <!-- Label: Book supplier name -->
+        <!-- LABEL: Supplier -->
         <TextView
             style="@style/LabelStyle"
             android:text="@string/book_supplier" />
 
-        <!-- Field: Book supplier name -->
+        <!-- FIELD: Supplier's name -->
         <EditText
             android:id="@+id/edit_book_supplier"
             style="@style/FieldStyle"
             android:hint="@string/hint_book_supplier"
-            android:inputType="textCapSentences" />
+            android:inputType="textCapWords" />
 
     </LinearLayout>
 
-    <!-- SUPPLIER'S PHONE -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!-- LAYOUT: PHONE NUMBER -->
+    <LinearLayout style="@style/FieldsHorizontalLayouts">
 
-        <!-- Label: Book supplier phone -->
+        <!-- LABEL: Phone -->
         <TextView
             style="@style/LabelStyle"
             android:text="@string/book_supplier_phone" />
 
-        <!-- Field: Book supplier phone -->
+        <!-- FIELD: Phone number of the book supplier -->
         <EditText
             android:id="@+id/edit_book_supplier_phone"
             style="@style/FieldStyle"
@@ -108,5 +126,15 @@
             android:inputType="phone" />
 
     </LinearLayout>
+
+    <!-- BUTTON: ORDER -->
+    <android.support.design.button.MaterialButton
+        android:id="@+id/order_button"
+        style="@style/OrderButtonStyle"
+        android:text="@string/order_button"
+        app:cornerRadius="@dimen/corner_radius"
+        app:icon="@drawable/phone"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/button_padding" />
 
 </LinearLayout>

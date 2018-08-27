@@ -65,6 +65,22 @@ public class BookProvider extends ContentProvider {
     }
 
     /**
+     * Returns the MIME type of data for the content URI.
+     */
+    @Override
+    public String getType(@NonNull Uri uri) {
+        final int match = sUriMatcher.match(uri);
+        switch (match) {
+            case BOOKS:
+                return BookEntry.CONTENT_LIST_TYPE;
+            case BOOK_ID:
+                return BookEntry.CONTENT_ITEM_TYPE;
+            default:
+                throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
+        }
+    }
+
+    /**
      * Perform the query for the given URI. Use the given projection, selection, selection
      * arguments and sort order.
      */
@@ -112,22 +128,6 @@ public class BookProvider extends ContentProvider {
     }
 
     /**
-     * Returns the MIME type of data for the content URI.
-     */
-    @Override
-    public String getType(@NonNull Uri uri) {
-        final int match = sUriMatcher.match(uri);
-        switch (match) {
-            case BOOKS:
-                return BookEntry.CONTENT_LIST_TYPE;
-            case BOOK_ID:
-                return BookEntry.CONTENT_ITEM_TYPE;
-            default:
-                throw new IllegalStateException("Unknown URI " + uri + " with match " + match);
-        }
-    }
-
-    /**
      * Insert new data into the provider with the given ContentValues.
      */
     @Override
@@ -148,7 +148,7 @@ public class BookProvider extends ContentProvider {
     private Uri insertBook(Uri uri, ContentValues values) {
 
         // name TEXT NOT NULL - Check that the name is not null
-        String name = values.getAsString(BookEntry.COLUMN_BOOK_PRODUCT_NAME);
+        String name = values.getAsString(BookEntry.COLUMN_BOOK_NAME);
         if (name == null) {
             throw new IllegalArgumentException("Book requires a name");
         }
@@ -219,10 +219,10 @@ public class BookProvider extends ContentProvider {
      */
     private int updateBook(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 
-        // If the {@link BookEntry#COLUMN_BOOK_PRODUCT_NAME} key is present,
+        // If the {@link BookEntry#COLUMN_BOOK_NAME} key is present,
         // check that the name value is not null
-        if (values.containsKey(BookEntry.COLUMN_BOOK_PRODUCT_NAME)) {
-            String name = values.getAsString(BookEntry.COLUMN_BOOK_PRODUCT_NAME);
+        if (values.containsKey(BookEntry.COLUMN_BOOK_NAME)) {
+            String name = values.getAsString(BookEntry.COLUMN_BOOK_NAME);
             // Handle the case when the value is null
             if (name == null) {
                 throw new IllegalArgumentException("Book require a name");

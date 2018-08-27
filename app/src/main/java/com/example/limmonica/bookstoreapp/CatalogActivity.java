@@ -80,7 +80,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 // Set the URI on the data field of the intent
                 intent.setData(currentBookUri);
 
-                // Launch the {@link EditorActivity} to display the data for the current pet
+                // Launch the {@link EditorActivity} to display the data for the current book
                 startActivity(intent);
             }
         });
@@ -97,11 +97,11 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // Create a ContentValues object where column names are the keys,
         // and the book's attributes are the values.
         ContentValues values = new ContentValues();
-        values.put(BookEntry.COLUMN_BOOK_PRODUCT_NAME, "Gone With The Wind, Margaret Mitchell");
+        values.put(BookEntry.COLUMN_BOOK_NAME, "Gone With The Wind");
         values.put(BookEntry.COLUMN_BOOK_PRICE, "9");
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, "10");
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, "Amazon");
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, "+1 800 800 333");
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE, "+1 800 800 333");
 
         // Insert a new row for the book in the provider using the ContentResolver.
         getContentResolver().insert(BookEntry.CONTENT_URI, values);
@@ -196,11 +196,11 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         // Define a projection that specifies which columns from the database will be used after this query.
         String[] projection = {
                 BookEntry._ID,
-                BookEntry.COLUMN_BOOK_PRODUCT_NAME,
+                BookEntry.COLUMN_BOOK_NAME,
                 BookEntry.COLUMN_BOOK_PRICE,
                 BookEntry.COLUMN_BOOK_QUANTITY,
                 BookEntry.COLUMN_BOOK_SUPPLIER_NAME,
-                BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER
+                BookEntry.COLUMN_BOOK_SUPPLIER_PHONE
         };
 
         // This loader will execute the ContentProvider's query method on a background thread

@@ -1,16 +1,19 @@
 <resources>
     <string name="app_name">BookStore</string>
-    <string name="product_name">Name</string>
-    <string name="hint_book_name">Insert Book Name</string>
-    <string name="book_price">Price</string>
-    <string name="hint_book_price">Insert Book Price</string>
-    <string name="hint_book_quantity">Insert Book Quantity</string>
-    <string name="book_quantity">Quantity</string>
-    <string name="book_supplier">Supplier</string>
-    <string name="hint_book_supplier">Insert Supplier\'s Name</string>
-    <string name="book_supplier_phone">Phone</string>
-    <string name="hint_book_supplier_phone">Insert Supplier\'s Phone</string>
-    <string name="add_book_button">Add Book</string>
+    <string name="book_title">Title:</string>
+    <string name="hint_book_title">Title of the book (required)</string>
+    <string name="book_price">Price:</string>
+    <string name="hint_book_price">Price of the book (required)</string>
+    <string name="book_quantity">Quantity:</string>
+    <string name="hint_book_quantity">Quantity (required)</string>
+    <string name="book_supplier">Supplier:</string>
+    <string name="hint_book_supplier">Name of the supplier</string>
+    <string name="book_supplier_phone">Phone:</string>
+    <string name="hint_book_supplier_phone">Phone of the supplier</string>
+    <string name="sale_button">Sale</string>
+    <string name="increment_quantity">+</string>
+    <string name="decrement_quantity">-</string>
+    <string name="order_button">Order</string>
     <string name="editor_insert_book_failed">Error with saving the book</string>
     <string name="editor_insert_book_success">Book saved successfully</string>
     <string name="action_save">Save</string>
@@ -33,8 +36,16 @@
     <string name="editor_delete_book_successful">Book deleted</string>
     <string name="editor_delete_book_failed">Error with deleting book</string>
     <string name="delete_all_books_failed">Error with deleting all books</string>
-    <string name="unknown_supplier">Unknown supplier</string>
-    <string name="not_available">Not available</string>
     <string name="delete_all_dialog_msg">Delete all books?</string>
-
+    <string name="sale_update_failure">Error with updating book sale</string>
+    <string name="sale_update_success">Sale updated</string>
+    <string name="book_title_invalid">Please insert a title</string>
+    <string name="book_price_invalid">Please insert a price</string>
+    <string name="book_quantity_invalid">Please insert a quantity</string>
+    <string name="increased_quantity">Book quantity increased by 1</string>
+    <string name="decreased_quantity">Book quantity decreased by 1</string>
+    <string name="out_of_stock">Book is out of stock</string>
+    <string name="call_permission_denied">Permission denied</string>
+    <string name="list_item_qty_label">Qty:</string>
+    <string name="list_item_price_label">Price:</string>
 </resources>

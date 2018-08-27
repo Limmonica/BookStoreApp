@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,8 +12,10 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center_vertical</item>
         <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -21,8 +23,62 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">3</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/field_text_size</item>
         <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+    <style name="FieldsHorizontalLayouts">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/parent_layout_padding</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="SaleButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1.5</item>
+        <item name="android:elevation" tools:targetApi="lollipop">@dimen/button_elevation</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:textSize">@dimen/sale_button_text_size</item>
+    </style>
+
+    <style name="ListItemValuesLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ListItemLabelsStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/list_item_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ListItemValuesStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/list_item_text_size</item>
+    </style>
+
+    <style name="ListItemTitleStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/parent_layout_padding</item>
+        <item name="android:textSize">@dimen/list_item_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="OrderButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:textSize">@dimen/order_button_text_size</item>
     </style>
 
 </resources>
