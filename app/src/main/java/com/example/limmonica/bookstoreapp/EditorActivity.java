@@ -61,7 +61,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * EditText field to enter the book supplier's name
      */
-    private EditText mSupplierText;
+    private EditText mSupplierEditText;
 
     /**
      * EditText field to enter the book supplier's phone number
@@ -139,7 +139,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mTitleEditText = findViewById(R.id.edit_book_name);
         mPriceEditText = findViewById(R.id.edit_book_price);
         mQuantityEditText = findViewById(R.id.edit_book_quantity);
-        mSupplierText = findViewById(R.id.edit_book_supplier);
+        mSupplierEditText = findViewById(R.id.edit_book_supplier);
         mPhoneEditText = findViewById(R.id.edit_book_supplier_phone);
 
         // Setup OnTouchListeners on all the input fields in order to know if there are unsaved
@@ -147,7 +147,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mTitleEditText.setOnTouchListener(mTouchListener);
         mPriceEditText.setOnTouchListener(mTouchListener);
         mQuantityEditText.setOnTouchListener(mTouchListener);
-        mSupplierText.setOnTouchListener(mTouchListener);
+        mSupplierEditText.setOnTouchListener(mTouchListener);
         mPhoneEditText.setOnTouchListener(mTouchListener);
         mPlusButton.setOnTouchListener(mTouchListener);
         mMinusButton.setOnTouchListener(mTouchListener);
@@ -248,7 +248,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mTitleEditText.setText(title);
             mPriceEditText.setText(String.format(Locale.getDefault(), "%s", Integer.toString(price)));
             mQuantityEditText.setText(String.format(Locale.getDefault(), "%s", Integer.toString(quantity)));
-            mSupplierText.setText(supplier);
+            mSupplierEditText.setText(supplier);
             mPhoneEditText.setText(phone);
         }
     }
@@ -259,7 +259,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mTitleEditText.setText("");
         mPriceEditText.setText(String.valueOf(0));
         mQuantityEditText.setText(String.valueOf(0));
-        mSupplierText.setText("");
+        mSupplierEditText.setText("");
         mPhoneEditText.setText("");
     }
 
@@ -271,6 +271,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String titleString = mTitleEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
+        String supplierString = mSupplierEditText.getText().toString().trim();
+        String phoneString = mPhoneEditText.getText().toString().trim();
 
         // If the field is empty, show a toast message prompting the user to insert a value
         if (TextUtils.isEmpty(titleString)) {
@@ -281,6 +283,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return false;
         } else if (TextUtils.isEmpty(quantityString)) {
             Toast.makeText(this, R.string.book_quantity_invalid, Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (TextUtils.isEmpty(supplierString)) {
+            Toast.makeText(this, R.string.book_supplier_invalid, Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (TextUtils.isEmpty(phoneString)) {
+            Toast.makeText(this, R.string.book_phone_invalid, Toast.LENGTH_SHORT).show();
             return false;
         } else {
             return true;
@@ -295,7 +303,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String nameString = mTitleEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
-        String supplierString = mSupplierText.getText().toString().trim();
+        String supplierString = mSupplierEditText.getText().toString().trim();
         String phoneString = mPhoneEditText.getText().toString().trim();
 
         // Check if this is a new book and check if all fields in the editor are blank

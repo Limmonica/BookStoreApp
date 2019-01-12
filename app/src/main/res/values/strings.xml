@@ -48,4 +48,6 @@
     <string name="call_permission_denied">Permission denied</string>
     <string name="list_item_qty_label">Qty:</string>
     <string name="list_item_price_label">Price:</string>
+    <string name="book_supplier_invalid">Please insert a supplier</string>
+    <string name="book_phone_invalid">Please insert a phone number</string>
 </resources>
